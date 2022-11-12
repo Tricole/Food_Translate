@@ -2,9 +2,15 @@
 const textToSpeech = require("@google-cloud/text-to-speech");
 const Translate = require("@google-cloud/translate").v3beta1;
 const vision = require("@google-cloud/vision");
-require("dotenv").config({ path: "./.env" });
+require("dotenv").config();
+const gcloud = process.env.GCLOUD_PROJECT;
+console.log(gcloud);
 
-const CREDENTIALS = GOOGLE_APPLICATION_CREDENTIALS;
+const CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+let cred_objects = JSON.parse(CREDENTIALS);
+// for (let item of CREDENTIALS) console.log(item);
+console.log(cred_objects.project_id);
+
 const projectId = "food_translate";
 
 // Import other required libraries
