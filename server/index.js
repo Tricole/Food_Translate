@@ -1,7 +1,9 @@
-const express = require("express");
-const path = require("path");
+const createServer = require("./server");
+const PORT = process.env.PORT || 4000;
+const server = createServer();
 
-function setupServer() {
-	app.use(express.static(path.resolve(__dirname, "../client/build")));
-	app.use(express.json());
-}
+(() => {
+	server.listen(PORT, () => {
+		console.log(`App is listening at http://localhost:${PORT}`);
+	});
+})();
