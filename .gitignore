@@ -11,6 +11,7 @@ node_modules
 # production
 /build
 /client/build
+food-translater-8115632c81bd
 
 # misc
 .DS_Store

@@ -7,9 +7,10 @@ const gcloud = process.env.GCLOUD_PROJECT;
 console.log(gcloud);
 
 const CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS;
-let cred_objects = JSON.parse(CREDENTIALS);
+console.log(CREDENTIALS);
+// let cred_objects = JSON.parse(CREDENTIALS);
 // for (let item of CREDENTIALS) console.log(item);
-console.log(cred_objects);
+// console.log(cred_objects);
 
 const projectId = "food_translate";
 
