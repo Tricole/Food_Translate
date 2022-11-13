@@ -7,6 +7,7 @@ exports.seed = async function (knex) {
 	await knex("users_table").del();
 	await knex("users_table").insert([
 		{
+			id: 1,
 			first_name: "Bob",
 			last_name: "Hurley",
 			age: 43,
@@ -15,6 +16,7 @@ exports.seed = async function (knex) {
 			diet_restrictions: JSON.stringify(["nuts", "lactose"]),
 		},
 		{
+			id: 2,
 			first_name: "Yuki",
 			last_name: "Yokosuke",
 			age: 22,
@@ -23,6 +25,7 @@ exports.seed = async function (knex) {
 			diet_restrictions: JSON.stringify(["fish"]),
 		},
 		{
+			id: 3,
 			first_name: "Mehmet",
 			last_name: "Yilmaz",
 			age: 30,
@@ -31,6 +34,7 @@ exports.seed = async function (knex) {
 			diet_restrictions: JSON.stringify(["halal"]),
 		},
 		{
+			id: 4,
 			first_name: "Rahul",
 			last_name: "Singh",
 			age: 51,
@@ -39,6 +43,7 @@ exports.seed = async function (knex) {
 			diet_restrictions: JSON.stringify(["paleo"]),
 		},
 		{
+			id: 5,
 			first_name: "Sharon",
 			last_name: "Ozz",
 			age: 27,
