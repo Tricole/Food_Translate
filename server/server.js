@@ -45,6 +45,17 @@ function setupServer() {
 		}
 	});
 
+	app.delete("/users/:id", async (req, res) => {
+		try {
+			const id = req.params.id;
+			await db("users_table").where("id", id).delete();
+
+			res.status(200).send("Successful deletion of record");
+		} catch (error) {
+			res.status(500).send(error);
+		}
+	});
+
 	return app;
 }
 
