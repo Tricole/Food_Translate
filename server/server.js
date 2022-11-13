@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const db = require("./knex");
+// const db = require("./knex");
 
 function setupServer() {
 	const app = express();
@@ -8,7 +8,7 @@ function setupServer() {
 	app.use(express.static(path.resolve(__dirname, "../client/build")));
 	app.use(express.json());
 
-	app.get("/test", async (res, req) => {
+	app.get("/test", (res, req) => {
 		res.status(200).send("successful get");
 	});
 
