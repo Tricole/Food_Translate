@@ -8,11 +8,11 @@ function setupServer() {
 	app.use(express.static(path.resolve(__dirname, "../client/build")));
 	app.use(express.json());
 
-	app.get("/test", (res, req) => {
+	app.get("/test", (req, res) => {
 		res.status(200).send("successful get");
 	});
 
-	app.get("/users", async (res, req) => {
+	app.get("/users", async (req, res) => {
 		// console.log(req.body);
 		try {
 			const users = await db("users_table").select("*");
@@ -22,7 +22,7 @@ function setupServer() {
 		}
 	});
 
-	app.post("/new_user", async (res, req) => {
+	app.post("/new_user", async (req, res) => {
 		try {
 			const payload = req.body;
 			await db("users_table").insert(payload);
