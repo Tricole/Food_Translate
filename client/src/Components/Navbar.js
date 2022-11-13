@@ -1,9 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function AddNavBar() {
-	useEffect(() => {
-		AddNavBar();
-	}, []);
+	const [nav, setNav] = useState("on");
+	useEffect(() => {}, []);
 
-	return <h1>Navbar</h1>;
+	return (
+		<div>
+			{nav === "on" ? (
+				<>
+					<h1>Navbar</h1>
+				</>
+			) : (
+				<>
+					<h2>Testing</h2>
+				</>
+			)}
+		</div>
+	);
 }

@@ -24,7 +24,7 @@ export default function UsersTable() {
 	return (
 		<>
 			<div className="usersTable">
-				<tbody>{usersList}</tbody>
+				<div>{usersList}</div>
 			</div>
 		</>
 	);
