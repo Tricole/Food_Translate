@@ -10,7 +10,7 @@ export default function UsersTable() {
 
 	async function getUsers() {
 		try {
-			const fetchUsers = await axios.get("/users");
+			const fetchUsers = await axios.get("http://localhost:4000/users");
 			setUserTable(fetchUsers.data);
 		} catch (error) {
 			console.log(error);
@@ -24,7 +24,7 @@ export default function UsersTable() {
 	return (
 		<>
 			<div className="usersTable">
-				<tbody>{usersList}</tbody>
+				<div>{usersList}</div>
 			</div>
 		</>
 	);
