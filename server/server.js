@@ -33,6 +33,18 @@ function setupServer() {
 		}
 	});
 
+	app.put("/users/:id", async (req, res) => {
+		try {
+			const id = req.params.id;
+			const changes = req.body;
+			await db("users_table").where("id", id).update(changes);
+
+			res.status(200).send(`Updated user with id ${id}`);
+		} catch (error) {
+			res.status(500).send(error);
+		}
+	});
+
 	return app;
 }
 
