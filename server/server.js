@@ -1,12 +1,14 @@
 const express = require("express");
 const path = require("path");
 const db = require("./knex");
+var cors = require("cors");
 
 function setupServer() {
 	const app = express();
 
 	app.use(express.static(path.resolve(__dirname, "../client/build")));
 	app.use(express.json());
+	app.use(cors());
 
 	app.get("/test", (req, res) => {
 		res.status(200).send("successful get");
