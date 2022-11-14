@@ -8,7 +8,7 @@ function App() {
 			<AddNavBar />
 			<UsersTable />
 			<header className="App-header">
-				<p>Hello World!!!</p>
+				<p>Hello</p>
 			</header>
 		</div>
 	);
