@@ -39,7 +39,7 @@ export default function UsersTable() {
 			? event.target.activity.value
 			: user.activity;
 		const diet_restrictions = event.target.diet_restrictions.value
-			? event.target.diet_restrictions.value
+			? JSON.stringify(event.target.diet_restrictions.value.split(" "))
 			: user.diet_restrictions;
 
 		const updateUser = {
@@ -48,13 +48,8 @@ export default function UsersTable() {
 			age: age,
 			height: height,
 			activity: activity,
-			diet_restrictions: JSON.stringify(diet_restrictions.split(" ")),
+			diet_restrictions: diet_restrictions,
 		};
-
-		// const updatedUser = {
-		// 	id: `${event.target.id.value}`,
-		// 	first_name: `${event.target.first_name.value}`,
-		// };
 
 		console.log(updateUser);
 
