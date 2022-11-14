@@ -27,6 +27,7 @@ function setupServer() {
 	app.post("/new_user", async (req, res) => {
 		try {
 			const payload = req.body;
+			console.log(payload);
 			await db("users_table").insert(payload);
 
 			res.status(200).send("Success");
