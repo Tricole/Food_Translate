@@ -28,11 +28,11 @@ export default function UsersTable() {
 	// 	}
 	// }
 
-	// function removeUser(id) {
-	// e.preventDefault();
-	// axios.delete(`/users/${id}`);
-	// 	console.log(id);
-	// }
+	async function removeUser(id) {
+		// e.preventDefault();
+		await axios.delete(`/users/${id}`);
+		console.log(id);
+	}
 
 	// if (temp === "yes") {
 	const usersList = usersTable.map((user) => {
@@ -41,17 +41,12 @@ export default function UsersTable() {
 			<p>
 				<span>
 					{fullName} {user.age}
+					<button onClick={removeUser}>Remove</button>
 					<button>Edit</button>
 				</span>
 			</p>
 		);
 	});
-	// }
-
-	// const usersList = usersTable.map((user) => {
-	// 	const fullName = user.first_name + " " + user.last_name;
-	// 	// setName("test");
-	// 	setName(`${user.first_name} ${user.last_name}`);
 
 	return (
 		<>
