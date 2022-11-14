@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import FormContainer from "./UserTableForms/FormContainer";
 
 export default function UsersTable() {
 	const [usersTable, setUserTable] = useState([]);
@@ -18,6 +19,36 @@ export default function UsersTable() {
 		}
 	}
 
+	async function updateUser(event, user) {
+		event.preventDefault(event);
+		console.log(user);
+		console.log(event.target.first_name.value);
+
+		// const age = event.target.age.value? event.target.age.value :
+
+		const updateUser = {
+			first_name: `${event.target.first_name.value}`,
+			last_name: `${event.target.last_name.value}`,
+			age: `${event.target.age.value}`,
+			height: `${event.target.height.value}`,
+			activity: `${event.target.activity.value}`,
+			diet_restrictions: `${event.target.diet_restrictions.value}`,
+		};
+
+		// const updatedUser = {
+		// 	id: `${event.target.id.value}`,
+		// 	first_name: `${event.target.first_name.value}`,
+		// };
+
+		console.log(updateUser);
+
+		try {
+			await axios.put(`/users/${1}`, updateUser);
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
 	async function removeUser(id) {
 		await axios.delete(`/users/${id}`);
 		setUserTable(usersTable.filter((el) => el.id !== id));
@@ -30,7 +61,11 @@ export default function UsersTable() {
 				<span>
 					{fullName} {user.age}
 					<button onClick={() => removeUser(user.id)}>Remove</button>
-					<button>Edit</button>
+					<FormContainer
+						triggerText={"Edit"}
+						onSubmit={(event) => updateUser(event, user)}
+					/>
+					{/* <button onClick={ updateUser} >Edit</button> */}
 				</span>
 			</p>
 		);
