@@ -18,7 +18,7 @@ export default function NewUser() {
 			? event.target.activity.value
 			: "";
 		const diet_restrictions = event.target.diet_restrictions.value
-			? event.target.diet_restrictions.value
+			? JSON.stringify(event.target.diet_restrictions.value.split(" "))
 			: "";
 
 		const newUserData = {
@@ -27,11 +27,18 @@ export default function NewUser() {
 			age: age,
 			height: height,
 			activity: activity,
-			// diet_restrictions: diet_restrictions.split(" "),
+			diet_restrictions: diet_restrictions,
 		};
+		// const newUserData = {
+		// 	first_name: "Salih",
+		// 	last_name: "Huseyin",
+		// 	age: "61",
+		// 	height: 176,
+		// 	activity: "Active",
+		// 	diet_restrictions: JSON.stringify(["beets", "carrots"]),
+		// };
 
-		console.log(JSON.stringify(newUserData));
-		alert(JSON.stringify(newUserData));
+		// console.log(JSON.stringify(newUserData));
 
 		try {
 			const response = await axios.post("/new_user", newUserData);
