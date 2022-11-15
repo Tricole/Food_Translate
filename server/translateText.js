@@ -12,7 +12,6 @@ const gcloud = process.env.GCLOUD_PROJECT;
 console.log(gcloud);
 
 const projectId = "food_translate";
-
 const fs = require("fs");
 //const escape = require('escape-html');
 const util = require("util");
@@ -59,3 +58,5 @@ translateText("Oggi è lunedì", "en")
 	.catch((err) => {
 		console.log(err);
 	});
+
+module.exports = { translateText, detectLanguage };
