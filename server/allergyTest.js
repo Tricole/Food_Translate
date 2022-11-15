@@ -19,9 +19,9 @@ function checkVegan(list) {
 	return isVegan.isVeganIngredientList(textArr);
 }
 
-function checkNuts(list) {
+function noNuts(list) {
 	let textArr = list.split(" ");
 	const result = textArr.filter((item) => treeNutAllergies.includes(item));
 
-	return result.length > 0;
+	return result.length === 0;
 }
