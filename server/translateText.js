@@ -2,6 +2,7 @@ const textToSpeech = require("@google-cloud/text-to-speech");
 const { Translate } = require("@google-cloud/translate").v2;
 const vision = require("@google-cloud/vision");
 require("dotenv").config();
+// require("axios");
 
 const CREDENTIALS = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
 
@@ -83,29 +84,34 @@ const text =
 	"質61.0g 食物繊維4.9g) 食塩相当量 4.73" +
 	"g(推定値)";
 
-translateText(text, "en")
-	.then((res) => {
-		console.log(res);
-	})
-	.catch((err) => {
-		console.log(err);
-	});
+// translateText(text, "en")
+// 	.then((res) => {
+// 		console.log(res);
+// 	})
+// 	.catch((err) => {
+// 		console.log(err);
+// 	});
 const client = new vision.ImageAnnotatorClient(CONFIG);
 
 async function picToText(inputFile) {
 	try {
 		const [result] = await client.textDetection(inputFile);
-		return await result.fullTextAnnotation.text;
+		return result.fullTextAnnotation.text;
 	} catch (error) {
 		console.log(error);
+	} finally {
+		console.log("Promise completed");
 	}
 }
 
-// (function transPic() {
-// 	picToText(
-// 		"./picTests/people-running-carrying-key-unlock-keyhole-sample-text_1262-19457.jpeg"
-// 	).then((data) => console.log("🌏", data));
-// })();
+(async function transPic() {
+	const data = await picToText("./picTests/IMG_9589.JPG");
+	const result = await translateText(data, "en");
+	console.log(result);
+	// picToText("./picTests/IMG_9589.JPG").then((data) => {
+	// 	translateText(data, "en").then((data) => console.log(data));
+	// });
+})();
 
 // console.log(result);
 // console.log(result.text);
