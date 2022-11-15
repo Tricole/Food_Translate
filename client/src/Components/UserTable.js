@@ -85,7 +85,6 @@ export default function UsersTable() {
 	return (
 		<>
 			<div className="usersTable">
-				Hello World
 				<div>{usersList}</div>
 			</div>
 		</>

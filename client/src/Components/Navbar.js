@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Profile from "./TakePhoto";
 
 export default function AddNavBar() {
 	const [nav, setNav] = useState("on");
@@ -9,6 +10,9 @@ export default function AddNavBar() {
 			{nav === "on" ? (
 				<>
 					<h1>Navbar</h1>
+					{/* <div className="container mt-5">
+						<Profile />
+					</div> */}
 				</>
 			) : (
 				<>
