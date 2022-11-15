@@ -1,6 +1,9 @@
 const vision = require("@google-cloud/vision");
+require("dotenv").config;
 const fs = require("fs");
 const util = require("util");
+
+const CREDENTIALS = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
 
 /**
  * Detects text in an image file
