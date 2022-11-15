@@ -83,13 +83,13 @@ const text =
 	"質61.0g 食物繊維4.9g) 食塩相当量 4.73" +
 	"g(推定値)";
 
-translateText(text, "en")
-	.then((res) => {
-		console.log(res);
-	})
-	.catch((err) => {
-		console.log(err);
-	});
+// translateText(text, "en")
+// 	.then((res) => {
+// 		console.log(res);
+// 	})
+// 	.catch((err) => {
+// 		console.log(err);
+// 	});
 const client = new vision.ImageAnnotatorClient(CONFIG);
 
 async function picToText(inputFile) {
@@ -98,14 +98,16 @@ async function picToText(inputFile) {
 		return await result.fullTextAnnotation.text;
 	} catch (error) {
 		console.log(error);
+	} finally {
+		console.log("Promise completed");
 	}
 }
 
-// (function transPic() {
-// 	picToText(
-// 		"./picTests/people-running-carrying-key-unlock-keyhole-sample-text_1262-19457.jpeg"
-// 	).then((data) => console.log("🌏", data));
-// })();
+(function transPic() {
+	picToText(
+		"./picTests/people-running-carrying-key-unlock-keyhole-sample-text_1262-19457.jpeg"
+	).then((data) => console.log("🌏", data));
+})();
 
 // console.log(result);
 // console.log(result.text);
