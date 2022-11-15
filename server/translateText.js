@@ -1,4 +1,3 @@
-// Imports the Google Cloud client library
 const textToSpeech = require("@google-cloud/text-to-speech");
 const { Translate } = require("@google-cloud/translate").v2;
 const vision = require("@google-cloud/vision");
@@ -84,13 +83,13 @@ const text =
 	"質61.0g 食物繊維4.9g) 食塩相当量 4.73" +
 	"g(推定値)";
 
-// translateText("ok", "en")
-// 	.then((res) => {
-// 		console.log(res);
-// 	})
-// 	.catch((err) => {
-// 		console.log(err);
-// 	});
+translateText(text, "en")
+	.then((res) => {
+		console.log(res);
+	})
+	.catch((err) => {
+		console.log(err);
+	});
 const client = new vision.ImageAnnotatorClient(CONFIG);
 
 async function picToText(inputFile) {
@@ -102,12 +101,11 @@ async function picToText(inputFile) {
 	}
 }
 
-(function transPic() {
-	picToText(
-		"./picTests/people-running-carrying-key-unlock-keyhole-sample-text_1262-19457.jpeg"
-	).then((data) => console.log("🌏", data));
-	// console.log("🌏", results);
-})();
+// (function transPic() {
+// 	picToText(
+// 		"./picTests/people-running-carrying-key-unlock-keyhole-sample-text_1262-19457.jpeg"
+// 	).then((data) => console.log("🌏", data));
+// })();
 
 // console.log(result);
 // console.log(result.text);
