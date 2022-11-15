@@ -29,16 +29,6 @@ export default function NewUser() {
 			activity: activity,
 			diet_restrictions: diet_restrictions,
 		};
-		// const newUserData = {
-		// 	first_name: "Salih",
-		// 	last_name: "Huseyin",
-		// 	age: "61",
-		// 	height: 176,
-		// 	activity: "Active",
-		// 	diet_restrictions: JSON.stringify(["beets", "carrots"]),
-		// };
-
-		// console.log(JSON.stringify(newUserData));
 
 		try {
 			const response = await axios.post("/new_user", newUserData);
