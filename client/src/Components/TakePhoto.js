@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 const WebcamComponent = () => <Webcam />;
 const videoConstraints = {
@@ -6,20 +6,24 @@ const videoConstraints = {
 	height: 400,
 	facingMode: "user",
 };
-const Profile = () => {
+const Profile = (props) => {
 	const [picture, setPicture] = useState("");
 	const webcamRef = React.useRef(null);
+
+	useEffect(() => {}, [picture]);
+
 	const capture = React.useCallback(() => {
 		const pictureSrc = webcamRef.current.getScreenshot();
 		setPicture(pictureSrc);
+		// console.log(props);
+		// console.log("🌏", returnPhoto);
+		props.selected(pictureSrc);
 	});
 	return (
 		<div>
-			<h2 className="mb-5 text-center">
-				React Photo Capture using Webcam Example
-			</h2>
+			<h2 className="mb-5 text-center">Take Photo</h2>
 			<div>
-				{picture == "" ? (
+				{picture === "" ? (
 					<Webcam
 						audio={false}
 						height={400}
@@ -33,11 +37,12 @@ const Profile = () => {
 				)}
 			</div>
 			<div>
-				{picture != "" ? (
+				{picture !== "" ? (
 					<button
 						onClick={(e) => {
 							e.preventDefault();
 							setPicture();
+							// console.log(picture);
 						}}
 						className="btn btn-primary"
 					>

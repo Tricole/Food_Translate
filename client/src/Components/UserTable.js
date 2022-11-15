@@ -8,7 +8,7 @@ export default function UsersTable() {
 
 	useEffect(() => {
 		getUsers();
-	}, [usersTable]);
+	}, [JSON.stringify(usersTable)]);
 
 	async function getUsers() {
 		try {
@@ -63,6 +63,7 @@ export default function UsersTable() {
 	async function removeUser(id) {
 		await axios.delete(`/users/${id}`);
 		setUserTable(usersTable.filter((el) => el.id !== id));
+		console.log("🌏");
 	}
 
 	const usersList = usersTable.map((user) => {
