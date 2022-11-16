@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import FormContainer from "./UserTableForms/FormContainer";
+import Hashes from "jshashes";
 
 export default function UsersTable() {
 	const [usersTable, setUserTable] = useState([]);
@@ -24,13 +25,20 @@ export default function UsersTable() {
 		// console.log(event.target.first_name.value);
 		console.log(user.diet_restrictions);
 
-		const age = event.target.age.value ? event.target.age.value : user.age;
+		const username = event.target.username.value
+			? event.target.username.value
+			: user.username;
+
+		const password = event.target.password.value
+			? new Hashes.SHA1().b64(event.target.password.value)
+			: user.password;
 		const first_name = event.target.first_name.value
 			? event.target.first_name.value
 			: user.first_name;
 		const last_name = event.target.last_name.value
 			? event.target.last_name.value
 			: user.last_name;
+		const age = event.target.age.value ? event.target.age.value : user.age;
 		const height = event.target.height.value
 			? event.target.height.value
 			: user.height;
@@ -42,6 +50,8 @@ export default function UsersTable() {
 			: user.diet_restrictions;
 
 		const updateUser = {
+			username: username,
+			password: password,
 			first_name: first_name,
 			last_name: last_name,
 			age: age,
