@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import FormContainer from "./UserTableForms/FormContainer";
 import Hashes from "jshashes";
 
 export default function NewUser() {
 	const [isCreated, setCreation] = useState(false);
+	const addUserNow = useRef(null);
 
 	useEffect(() => {}, [isCreated]);
 
@@ -51,6 +52,7 @@ export default function NewUser() {
 	return (
 		<>
 			<FormContainer
+				ref={addUserNow}
 				triggerText={"Add User"}
 				onSubmit={(event) => addUser(event)}
 			/>
