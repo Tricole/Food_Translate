@@ -15,10 +15,18 @@ function setupServer() {
 	});
 
 	app.get("/users", async (req, res) => {
-		// console.log(req.body);
 		try {
 			const users = await db("users_table").select("*");
 			res.status(200).send(users);
+		} catch (error) {
+			res.status(500).send(error);
+		}
+	});
+
+	app.get("/users/:username", async (req, res) => {
+		try {
+			const user = await db("users_table").select("*").where("username", username);
+			res.status(200).send(user);
 		} catch (error) {
 			res.status(500).send(error);
 		}
