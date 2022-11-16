@@ -47,23 +47,25 @@ const UserLogin = (props) => {
 	return (
 		<>
 			<form>
-				<label className="username credentials">
+				<label for="username" className="username credentials">
 					Username
 					<input
 						type="text"
 						// ref ={usernameRef}
+						id="username"
 						onChange={checkUsername}
 						name="username"
 						value={userName}
 					/>
 				</label>
-				<label className="username credentials">
-					password
+				<label for="password" className="username credentials">
+					Password
 					<input
-						type="text"
+						type="password"
 						// ref ={passwordRef}
 						onChange={checkPassword}
 						name="password"
+						id="password"
 						value={Password}
 					/>
 				</label>
