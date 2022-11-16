@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Modal from "./Modal";
 import TriggerButton from "./TriggerButton";
 export class FormContainer extends Component {
-	state = { isShown: false };
+	state = { isShown: true };
 	showModal = () => {
 		this.setState({ isShown: true }, () => {
 			this.closeButton.focus();
@@ -11,7 +11,7 @@ export class FormContainer extends Component {
 	};
 	closeModal = () => {
 		this.setState({ isShown: false });
-		this.TriggerButton.focus();
+		// this.TriggerButton.focus();
 		this.toggleScrollLock();
 	};
 	onKeyDown = (event) => {
