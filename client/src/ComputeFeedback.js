@@ -7,6 +7,9 @@ function ComputeFeedback() {
 
 	function takenPhoto(base64) {
 		console.log("🌏", base64);
+		var image = new Image();
+		image.src = base64;
+		console.log(image);
 	}
 	// console.log(takenPhoto);
 	return (

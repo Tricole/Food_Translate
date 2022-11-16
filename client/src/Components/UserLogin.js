@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Hashes from "jshashes";
 
-const UserLogin = (props) => {
-	const { registerNewUser, loginSuccess } = props;
+const UserLogin = ({ registerNewUser, loginSuccess }) => {
+	// const { registerNewUser, loginSuccess } = props;
 	// const usernameRef = useRef("");
 	// const passwordRef = useRef("");
 
@@ -25,8 +25,6 @@ const UserLogin = (props) => {
 	async function getUser() {
 		var SHA1 = new Hashes.SHA1().b64(Password);
 
-		let login = false;
-
 		try {
 			const fetchUser = await axios.get(`/users/${userName.trim()}`);
 
@@ -34,20 +32,20 @@ const UserLogin = (props) => {
 				alert("Wrong Password! Please try again");
 			else {
 				alert("Successful login");
-				login = true;
+				loginSuccess("mainPage");
+				return true;
 			}
 		} catch (error) {
 			alert("Please check your credentials and try again");
 			console.log(error);
+			return false;
 		}
-
-		return login;
 	}
 
 	return (
 		<>
 			<form>
-				<label for="username" className="username credentials">
+				<label htmlFor="username" className="username credentials">
 					Username
 					<input
 						type="text"
@@ -58,7 +56,7 @@ const UserLogin = (props) => {
 						value={userName}
 					/>
 				</label>
-				<label for="password" className="username credentials">
+				<label htmlFor="password" className="username credentials">
 					Password
 					<input
 						type="password"
@@ -72,11 +70,10 @@ const UserLogin = (props) => {
 				<button
 					onClick={(e) => {
 						e.preventDefault();
-						let outcome = getUser();
-						loginSuccess(outcome);
+						getUser();
 					}}
 				>
-					{" "}
+					{/* {" "} */}
 					Login
 				</button>
 			</form>
