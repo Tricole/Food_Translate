@@ -2,7 +2,6 @@ const textToSpeech = require("@google-cloud/text-to-speech");
 const { Translate } = require("@google-cloud/translate").v2;
 const vision = require("@google-cloud/vision");
 require("dotenv").config();
-// require("axios");
 
 const CREDENTIALS = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
 
@@ -16,7 +15,6 @@ const CREDENTIALS = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
 // console.log("🌏", cred_objects);
 
 const gcloud = process.env.GCLOUD_PROJECT;
-console.log(gcloud);
 
 // Configuration for the client
 
@@ -45,6 +43,25 @@ const translateText = async (text, targetLanguage) => {
 	}
 };
 
+const CONFIG = {
+	credentials: {
+		private_key: CREDENTIALS.private_key,
+		client_email: CREDENTIALS.client_email,
+	},
+};
+
+const client = new vision.ImageAnnotatorClient(CONFIG);
+
+const picToText = async function (inputFile) {
+	try {
+		const [result] = await client.textDetection(inputFile);
+		return result.fullTextAnnotation.text;
+	} catch (error) {
+		console.log(error);
+	} finally {
+		console.log("Promise completed");
+	}
+};
 // detectLanguage("Oggi è lunedì")
 // 	.then((res) => {
 // 		console.log(res);
@@ -103,11 +120,11 @@ const text =
 // );
 // console.log(res);
 
-// (async function transPic() {
-// 	const data = await picToText("./picTests/IMG_9589.JPG");
-// 	const result = await translateText(data, "en");
-// 	console.log(result);
-// })();
+(async function transPic() {
+	const data = await picToText("./picTests/IMG_9589.JPG");
+	const result = await translateText(data, "en");
+	console.log(result);
+})();
 
 // console.log(result);
 // console.log(result.text);
@@ -116,4 +133,4 @@ const text =
 
 // console.log(result);
 
-module.exports = translateText;
+module.exports = { translateText, picToText };

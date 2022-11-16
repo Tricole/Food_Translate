@@ -1,7 +1,22 @@
-const express = require("express");
+// require("dotenv").config();
+// import path from "path";
 const path = require("path");
+// require("dotenv").config({ path: require("find-config")(".env") });
+require("dotenv").config();
+
+// dotenv.load({ path: path.join(__dirname, ".env") });
+const express = require("express");
 const db = require("./knex");
 var cors = require("cors");
+const textToSpeech = require("@google-cloud/text-to-speech");
+const { Translate } = require("@google-cloud/translate").v2;
+const vision = require("@google-cloud/vision");
+
+// require("dotenv").config();
+const CREDENTIALS = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
+
+const picToText = require("./ocrDetection");
+const translateText = require("./translateText");
 
 function setupServer() {
 	const app = express();
@@ -17,6 +32,7 @@ function setupServer() {
 	app.get("/users", async (req, res) => {
 		try {
 			const users = await db("users_table").select("*");
+
 			res.status(200).send(users);
 		} catch (error) {
 			res.status(500).send(error);
@@ -31,6 +47,31 @@ function setupServer() {
 			res.status(200).send(user);
 		} catch (error) {
 			res.status(500).send(error);
+		}
+	});
+
+	app.post("/api", async (req, res) => {
+		try {
+			const payload = req.body;
+			console.log("🐓", payload);
+
+			const request = {
+				image: {
+					content: Buffer.from(payload.data, "base64"),
+				},
+			};
+
+			console.log(request);
+
+			(async function transPic() {
+				const data = await picToText("./picTests/IMG_9589.JPG");
+				const result = await translateText(data, "en");
+				res.status(200).send(result);
+			})();
+
+			res.status(200).send();
+		} catch (error) {
+			console.log(error);
 		}
 	});
 
