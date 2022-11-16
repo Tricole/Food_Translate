@@ -24,6 +24,8 @@ function setupServer() {
 	});
 
 	app.get("/users/:username", async (req, res) => {
+		const username = req.params.username;
+
 		try {
 			const user = await db("users_table").select("*").where("username", username);
 			res.status(200).send(user);

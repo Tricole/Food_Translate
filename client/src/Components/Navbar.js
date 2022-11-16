@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ComputeFeedback from "../ComputeFeedback";
+import UserLogin from "./UserLogin";
 
 export default function AddNavBar() {
 	const [nav, setNav] = useState("on");
@@ -10,7 +11,8 @@ export default function AddNavBar() {
 			{nav === "on" ? (
 				<>
 					<h1>Navbar</h1>
-					<ComputeFeedback></ComputeFeedback>
+					<UserLogin></UserLogin>
+					{/* <ComputeFeedback></ComputeFeedback> */}
 				</>
 			) : (
 				<>
