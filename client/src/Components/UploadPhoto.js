@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import axios from "axios";
 
 export default function UploadPhoto(props) {
 	const selectFile = useRef(null);
