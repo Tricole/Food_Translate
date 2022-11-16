@@ -104,14 +104,27 @@ async function picToText(inputFile) {
 	}
 }
 
-(async function transPic() {
-	const data = await picToText("./picTests/IMG_9589.JPG");
-	const result = await translateText(data, "en");
-	console.log(result);
-	// picToText("./picTests/IMG_9589.JPG").then((data) => {
-	// 	translateText(data, "en").then((data) => console.log(data));
-	// });
-})();
+function transPic(file) {
+	return picToText(file)
+		.then((data) => {
+			return translateText(data, "en");
+		})
+		.then((translatedText) => {
+			console.log(translatedText);
+			return translatedText;
+		});
+}
+
+const res = transPic(
+	"./picTests/people-running-carrying-key-unlock-keyhole-sample-text_1262-19457.jpeg"
+);
+console.log(res);
+
+// (async function transPic() {
+// 	const data = await picToText("./picTests/IMG_9589.JPG");
+// 	const result = await translateText(data, "en");
+// 	console.log(result);
+// })();
 
 // console.log(result);
 // console.log(result.text);
