@@ -1,6 +1,8 @@
 //uses cloud apis, the photo and the allergy list to find out if the food is appropriate for them or not
 import Profile from "./Components/TakePhoto";
-import { useState } from "react";
+
+const picToText = require("./Components/Translations/ocrDetection");
+const translateText = require("./Components/Translations/translateText");
 
 function ComputeFeedback() {
 	// const [takenPhoto, setTakenPhoto] = useState("");
