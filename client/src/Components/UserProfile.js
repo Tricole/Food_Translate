@@ -81,7 +81,7 @@ const UserProfile = (props) => {
 
 	return (
 		<>
-			<label for="username" className="username credentials">
+			<label htmlFor="username" className="username credentials">
 				Username
 				<input
 					type="text"
@@ -94,7 +94,7 @@ const UserProfile = (props) => {
 					// value={userName}
 				/>
 			</label>
-			<label for="password" className="password credentials">
+			<label htmlFor="password" className="password credentials">
 				Password
 				<input
 					type="password"
@@ -107,7 +107,7 @@ const UserProfile = (props) => {
 				/>
 			</label>
 
-			<label for="age" className="age">
+			<label htmlFor="age" className="age">
 				Age
 				<input
 					type="text"
@@ -120,8 +120,8 @@ const UserProfile = (props) => {
 				/>
 			</label>
 
-			<label for="height" className="height">
-				Age
+			<label htmlFor="height" className="height">
+				Height
 				<input
 					type="text"
 					id="height"
@@ -133,7 +133,7 @@ const UserProfile = (props) => {
 				/>
 			</label>
 
-			<label for="activity" className="height">
+			<label htmlFor="activity" className="height">
 				Activity
 				<input
 					type="text"
@@ -146,7 +146,7 @@ const UserProfile = (props) => {
 				/>
 			</label>
 
-			<label for="diet_restrictions" className="height">
+			<label htmlFor="diet_restrictions" className="height">
 				Diet Restrictions
 				<input
 					type="text"
@@ -158,8 +158,8 @@ const UserProfile = (props) => {
 					// value={userName}
 				/>
 			</label>
-
-			<button>Update</button>
+			<a></a>
+			<button onClick={updateUser}>Update</button>
 		</>
 	);
 };
