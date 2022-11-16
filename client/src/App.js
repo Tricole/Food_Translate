@@ -21,8 +21,14 @@ function App() {
 
 	return (
 		<div className="App">
-			<UserLogin registerNewUser={registerUser}></UserLogin>
 			<AddNavBar />
+			<div>
+				{newUser === false ? (
+					<UserLogin registerNewUser={registerUser}></UserLogin>
+				) : (
+					<h1>registerNewUser</h1>
+				)}
+			</div>
 			<UsersTable />
 			{/* <header className="App-header">
 				<p>Hello</p>
