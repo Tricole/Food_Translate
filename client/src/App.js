@@ -26,7 +26,8 @@ function App() {
 				{newUser === false ? (
 					<UserLogin registerNewUser={registerUser}></UserLogin>
 				) : (
-					<h1>registerNewUser</h1>
+					<NewUser></NewUser>
+					// <h1>registerNewUser</h1>
 				)}
 			</div>
 			<UsersTable />
