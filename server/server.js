@@ -18,6 +18,12 @@ const CREDENTIALS = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
 const picToText = require("./ocrDetection");
 const translateText = require("./translateText");
 
+function transPic(payload) {
+	const data = picToText(payload);
+	const result = translateText(data, "en");
+	return result;
+}
+
 function setupServer() {
 	const app = express();
 
@@ -61,15 +67,11 @@ function setupServer() {
 				},
 			};
 
-			console.log(request);
+			const result = transPic(request);
 
-			(async function transPic() {
-				const data = await picToText("./picTests/IMG_9589.JPG");
-				const result = await translateText(data, "en");
-				res.status(200).send(result);
-			})();
+			// const myPath = "./picTests/IMG_9589.JPG";
 
-			res.status(200).send();
+			res.status(200).send(result);
 		} catch (error) {
 			console.log(error);
 		}
