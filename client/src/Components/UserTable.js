@@ -4,7 +4,6 @@ import FormContainer from "./UserTableForms/FormContainer";
 
 export default function UsersTable() {
 	const [usersTable, setUserTable] = useState([]);
-	const [Name, setName] = useState("");
 
 	useEffect(() => {
 		getUsers();
@@ -54,7 +53,7 @@ export default function UsersTable() {
 		console.log(updateUser);
 
 		try {
-			await axios.put(`/users/${1}`, updateUser);
+			await axios.put(`/users/${user.id}`, updateUser);
 		} catch (error) {
 			console.log(error);
 		}
