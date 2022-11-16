@@ -3,7 +3,7 @@
  * @returns { Promise<void> }
  */
 exports.up = async function (knex) {
-	return await knex.schema.createTable("users_table", (table) => {
+	return await knex.schema.alterTable("users_table", (table) => {
 		table.string("username", 256).unique;
 		table.string("password", 256).unique;
 	});
