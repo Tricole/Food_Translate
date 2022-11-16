@@ -6,22 +6,17 @@ require("dotenv").config();
 
 const CREDENTIALS = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
 
-const CONFIG = {
-	credentials: {
-		private_key: CREDENTIALS.private_key,
-		client_email: CREDENTIALS.client_email,
-	},
-};
+// const CONFIG = {
+// 	credentials: {
+// 		private_key: CREDENTIALS.private_key,
+// 		client_email: CREDENTIALS.client_email,
+// 	},
+// };
 
 // console.log("🌏", cred_objects);
 
 const gcloud = process.env.GCLOUD_PROJECT;
 console.log(gcloud);
-
-const projectId = "food_translate";
-const fs = require("fs");
-//const escape = require('escape-html');
-const util = require("util");
 
 // Configuration for the client
 
@@ -91,34 +86,22 @@ const text =
 // 	.catch((err) => {
 // 		console.log(err);
 // 	});
-const client = new vision.ImageAnnotatorClient(CONFIG);
 
-async function picToText(inputFile) {
-	try {
-		const [result] = await client.textDetection(inputFile);
-		return result.fullTextAnnotation.text;
-	} catch (error) {
-		console.log(error);
-	} finally {
-		console.log("Promise completed");
-	}
-}
+// function transPic(file) {
+// 	return picToText(file)
+// 		.then((data) => {
+// 			return translateText(data, "en");
+// 		})
+// 		.then((translatedText) => {
+// 			console.log(translatedText);
+// 			return translatedText;
+// 		});
+// }
 
-function transPic(file) {
-	return picToText(file)
-		.then((data) => {
-			return translateText(data, "en");
-		})
-		.then((translatedText) => {
-			console.log(translatedText);
-			return translatedText;
-		});
-}
-
-const res = transPic(
-	"./picTests/people-running-carrying-key-unlock-keyhole-sample-text_1262-19457.jpeg"
-);
-console.log(res);
+// const res = transPic(
+// 	"./picTests/people-running-carrying-key-unlock-keyhole-sample-text_1262-19457.jpeg"
+// );
+// console.log(res);
 
 // (async function transPic() {
 // 	const data = await picToText("./picTests/IMG_9589.JPG");
@@ -133,4 +116,4 @@ console.log(res);
 
 // console.log(result);
 
-module.exports = { translateText, detectLanguage };
+module.exports = translateText;
