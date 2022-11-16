@@ -53,7 +53,7 @@ export default function NewUser() {
 		<>
 			<FormContainer
 				ref={addUserNow}
-				triggerText={"Add User"}
+				triggerText={"Register as a new user"}
 				onSubmit={(event) => addUser(event)}
 			/>
 		</>
