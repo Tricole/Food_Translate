@@ -36,22 +36,42 @@ function App() {
 		setPageStatus("userLogin");
 	}
 
+	function toUserMainPage() {
+		// e.preventDefault();
+		setPageStatus("mainPage");
+	}
+
 	function renderSwitch() {
 		// console.log(e);
 		// e.preventDefault();
 		console.log("tried to switch");
 		switch (pageStatus) {
 			case "userLogin":
-				return <UserLogin registerNewUser={registerUser}></UserLogin>;
+				return (
+					<UserLogin
+						loginSuccess={toUserMainPage}
+						registerNewUser={registerUser}
+					></UserLogin>
+				);
 
 			case "userProfile":
-				return <UserProfile></UserProfile>;
+				return (
+					<>
+						<AddNavBar goToProfile={userProfilePage} goToLogout={userLoginPage} />
+						<UserProfile></UserProfile>
+					</>
+				);
 
 			case "newUser":
-				return <NewUser></NewUser>;
+				return <NewUser goToMainPage={toUserMainPage}></NewUser>;
 
 			case "mainPage":
-				return <UserMainPage></UserMainPage>;
+				return (
+					<>
+						<AddNavBar goToProfile={userProfilePage} goToLogout={userLoginPage} />
+						<UserMainPage></UserMainPage>;
+					</>
+				);
 
 			default:
 				return <h1>Landing Page</h1>;
@@ -60,7 +80,6 @@ function App() {
 
 	return (
 		<div className="App">
-			<AddNavBar goToProfile={userProfilePage} goToLogout={userLoginPage} />
 			<div>
 				{renderSwitch()}
 				{/* {pageStatus === "newUser" ? (
