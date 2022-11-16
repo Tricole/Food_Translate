@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import Hashes from "jshashes";
 
 const UserLogin = (props) => {
-	const { changePage } = props;
+	const { registerNewUser } = props;
 
 	const [userName, setUserName] = useState(" ");
 	const [Password, setPassword] = useState("");
-
-	var usernameLogin = useRef("");
-	var passwordLogin = useRef("");
 
 	function checkUsername(e) {
 		e.preventDefault();
@@ -18,7 +16,10 @@ const UserLogin = (props) => {
 	function checkPassword(e) {
 		e.preventDefault();
 		// console.log(e.target.value);
-		setPassword(e.target.value);
+		var SHA1 = new Hashes.SHA1().b64(e.target.value);
+		console.log(SHA1);
+
+		setPassword(SHA1);
 	}
 
 	async function getUser() {
@@ -67,7 +68,7 @@ const UserLogin = (props) => {
 					Login
 				</button>
 			</form>
-			<a href="" onClick={changePage}></a>
+			<a href="" onClick={registerNewUser}></a>
 		</>
 	);
 };
