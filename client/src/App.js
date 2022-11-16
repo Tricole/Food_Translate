@@ -4,6 +4,7 @@ import UsersTable from "./Components/UserTable";
 import NewUser from "./Components/NewUser";
 import UserLogin from "./Components/UserLogin";
 import UserProfile from "./Components/UserProfile";
+import UserMainPage from "./Components/UserMainPage";
 
 import { useEffect, useState } from "react";
 
@@ -48,6 +49,9 @@ function App() {
 
 			case "newUser":
 				return <NewUser></NewUser>;
+
+			case "mainPage":
+				return <UserMainPage></UserMainPage>;
 
 			default:
 				return <h1>Landing Page</h1>;
