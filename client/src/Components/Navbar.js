@@ -11,7 +11,7 @@ export default function AddNavBar() {
 			{nav === "on" ? (
 				<>
 					<h1>Navbar</h1>
-					<UserLogin></UserLogin>
+					{/* <UserLogin></UserLogin> */}
 					{/* <ComputeFeedback></ComputeFeedback> */}
 				</>
 			) : (
