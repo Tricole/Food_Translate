@@ -14,6 +14,8 @@ exports.seed = async function (knex) {
 			height: 176,
 			activity: "Sedantry",
 			diet_restrictions: JSON.stringify(["nuts", "lactose"]),
+			username: "bob",
+			password: "Abcd1234",
 		},
 		{
 			id: 2,
@@ -23,6 +25,8 @@ exports.seed = async function (knex) {
 			height: 164,
 			activity: "Moderate",
 			diet_restrictions: JSON.stringify(["fish"]),
+			username: "yuki",
+			password: "Abcd1234",
 		},
 		{
 			id: 3,
@@ -32,6 +36,8 @@ exports.seed = async function (knex) {
 			height: 179,
 			activity: "Moderate",
 			diet_restrictions: JSON.stringify(["halal"]),
+			username: "mehmet",
+			password: "Abcd1234",
 		},
 		{
 			id: 4,
@@ -41,6 +47,8 @@ exports.seed = async function (knex) {
 			height: 185,
 			activity: "Sedantry",
 			diet_restrictions: JSON.stringify(["paleo"]),
+			username: "rahul",
+			password: "Abcd1234",
 		},
 		{
 			id: 5,
@@ -50,6 +58,8 @@ exports.seed = async function (knex) {
 			height: 161,
 			activity: "Active",
 			diet_restrictions: JSON.stringify(["kosher"]),
+			username: "sharon",
+			password: "Abcd1234",
 		},
 	]);
 };
