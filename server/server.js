@@ -16,7 +16,7 @@ const vision = require("@google-cloud/vision");
 const CREDENTIALS = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
 
 const picToText = require("./ocrDetection");
-const translateText = require("./translateText");
+const { translateText } = require("./translateText");
 
 function transPic(payload) {
 	const data = picToText(payload);
@@ -67,9 +67,12 @@ function setupServer() {
 				},
 			};
 
+			console.log(request);
+
 			const result = transPic(request);
 
 			// const myPath = "./picTests/IMG_9589.JPG";
+			console.log(result);
 
 			res.status(200).send(result);
 		} catch (error) {
