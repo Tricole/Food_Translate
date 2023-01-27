@@ -35,7 +35,9 @@ const detectLanguage = async (text) => {
 
 const translateText = async (text, targetLanguage) => {
 	try {
+		console.log("🌏", text);
 		let [response] = await translate.translate(text, targetLanguage);
+		console.log("👻", response);
 		return response;
 	} catch (error) {
 		console.log(`Error at translateText --> ${error}`);
@@ -119,11 +121,11 @@ const text =
 // );
 // console.log(res);
 
-// (async function transPic() {
-// 	const data = await picToText("./picTests/IMG_9589.JPG");
-// 	const result = await translateText(data, "en");
-// 	console.log(result);
-// })();
+(async function transPic() {
+	const data = await picToText("./picTests/IMG_9589.JPG");
+	const result = await translateText(data, "en");
+	console.log(result);
+})();
 
 // console.log(result);
 // console.log(result.text);
